@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -13,13 +15,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static android.R.attr.password;
+
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     public static final String TAG = "Auth";
-    public String email = "daniav82@hotmail.com";
-    public String password = "abracadabra123";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +63,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
+        EditText emailField = (EditText) findViewById(R.id.field_email);
+        String email = emailField.getText().toString();
+        EditText passwordField = (EditText) findViewById(R.id.field_password);
+        String password = passwordField.getText().toString();
+
+        Log.v("MainAvtivity", "email: " + email);
+        Log.v("MainAvtivity", "password: " + password);
+
         if (v.getId() == R.id.email_create_account_button) {
             createAccount(email, password);
+        }else if  (v.getId() == R.id.email_sign_in_button) {
+            singIn(email, password);
         }
     }
 
