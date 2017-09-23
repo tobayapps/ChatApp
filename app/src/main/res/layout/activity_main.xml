@@ -54,13 +54,13 @@
             android:id="@+id/email_password_fields"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
             <EditText
                 android:id="@+id/field_email"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/hint_email"
@@ -68,7 +68,7 @@
 
             <EditText
                 android:id="@+id/field_password"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/hint_password"
