@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -14,8 +13,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import static android.R.attr.password;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -91,7 +88,10 @@ public class MainActivity extends AppCompatActivity {
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, R.string.auth_failed,
+                            Toast.makeText(MainActivity.this, R.string.create_account_failed,
+                                    Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(MainActivity.this, R.string.create_account_success,
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -115,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             Toast.makeText(MainActivity.this, R.string.auth_failed,
+                                    Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(MainActivity.this, R.string.signed_in,
                                     Toast.LENGTH_SHORT).show();
                         }
 
